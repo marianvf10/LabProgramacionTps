@@ -1,0 +1,1 @@
+guia para ejecutar el programa
