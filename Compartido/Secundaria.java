@@ -22,7 +22,12 @@ public class Secundaria {
         //!Puse 7 threads de base,pero si ves que necesitas mas para operaciones mas complejas(como la operacion 7),agregale
         ExecutorService ejecutor = Executors.newFixedThreadPool(7);
         AlumnoMasFaltante alumnoMasFaltante = new AlumnoMasFaltante(base);
+        AlumnoMejorPromedio alumnoMejorPromedio = new AlumnoMejorPromedio(base);
+        MateriaMejorPromedio materiaMejorPromedio = new MateriaMejorPromedio(base);
         Future[] resultado = new Future[7];
+        int aux;
+
+        System.out.println(base.toString());
 
         //Menu principal
         System.out.println("Bienvenido al sistema de informacion de la secundaria,se mostraran los siguientes"+
@@ -36,25 +41,43 @@ public class Secundaria {
         System.out.println("7-Calcular cantidad de alumnos con buen comportamiento(ninguna amonestacion y menos de 10 faltas");
         do
         {
-            System.out.println("\n Ingrese ENTER para empezar:");   
-        }while(s.nextInt() != '\n');
+            System.out.println("\n Ingrese 1 para empezar:");   
+        }while(s.nextInt() != 1);
 
         //Ejecucion de operaciones
         resultado[0] = ejecutor.submit(alumnoMasFaltante);
-        System.out.println("a");
-        System.out.println("b");
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        System.out.println("c");
-        System.out.println("d");
-        System.out.println("e");
+        resultado[1] = ejecutor.submit(alumnoMejorPromedio);
+        resultado[2] = ejecutor.submit(materiaMejorPromedio);
+        //Seccion de gets 
 
         try {
-            System.out.println(resultado[0].get());
+            if((aux = (int)resultado[0].get()) != -1)
+            {
+                System.out.println("El id de alumno con mas faltas es: " +resultado[0].get());
+            }
+            else
+            {
+                System.out.println("No existe un alumno con mas faltas que el resto.");
+            }
+
+            if((aux = (int)resultado[1].get()) != -1)
+            {
+                System.out.println("El id de alumno con mejor promedio: " +resultado[1].get());
+            }
+            else
+            {
+                System.out.println("No existe un alumno con mejor promedio que el resto.");
+            }
+
+            if((aux = (int)resultado[2].get()) != -1)
+            {
+                System.out.println("El id de materia con mejor promedio: " +resultado[2].get());
+            }
+            else
+            {
+                System.out.println("No existe una materia con mejor promedio que el resto.");
+            }
+
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -62,8 +85,7 @@ public class Secundaria {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        /*Seccion de gets */
-      
+        ejecutor.shutdown();
     }
 }
 

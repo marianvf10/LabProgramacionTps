@@ -4,17 +4,21 @@ import java.util.Random;
 
 public class BaseBatos {
     
-    final static int cantAlumnos = 6;
-    final static int cantMaterias = 10;
-    final static int cantMeses = 12;
+    final private static Random r = new Random();
 
-    private int[][] nota = new int[cantAlumnos][cantMaterias];
-    public int[][] falta = new int[cantAlumnos][cantMeses];
-    private int[][] amonestacion = new int[cantAlumnos][cantMeses];
+    final private static int cantAlumnos = 6;
+    final private static int cantMaterias = 3;
+    final private static int cantMeses = 3;
 
-    public void BaseDatos()
+    private int[][] nota;
+    private int[][] falta;
+    private int[][] amonestacion;
+
+    public BaseBatos()
     {
-        Random r = new Random();
+        nota = new int[cantAlumnos][cantMaterias];
+        falta = new int[cantAlumnos][cantMeses];
+        amonestacion = new int[cantAlumnos][cantMeses];
 
         for (int i = 0;i<cantAlumnos;i++)
         {
@@ -26,7 +30,6 @@ public class BaseBatos {
             {
                 falta[i][j] = r.nextInt(30)+1;
                 amonestacion[i][j] = r.nextInt(4)+1;
-                System.out.println(falta[i][j]);
             }
         }
     }
@@ -41,6 +44,11 @@ public class BaseBatos {
         return cantAlumnos;
     }
 
+    public int getCantMaterias()
+    {
+        return cantMaterias;
+    }
+
     public int sumaFilaFalta(int alumno)
     {
         int res = 0;
@@ -49,7 +57,8 @@ public class BaseBatos {
         {
             //Emula la latencia fisica de acceso a la base de datos
             try {
-                Thread.sleep(1000);
+                System.out.println(alumno+"_"+mes);
+                Thread.sleep(r.nextInt(2001));
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -60,4 +69,81 @@ public class BaseBatos {
         return res;
     }
 
+    public int sumaFilaNota(int alumno)
+    {
+        int res = 0;
+
+        for(int materia = 0;materia<cantMaterias;materia++)
+        {
+            //Emula la latencia fisica de acceso a la base de datos
+            try {
+                System.out.println(alumno+"-"+materia);
+                Thread.sleep(r.nextInt(2001));
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            res += nota[alumno][materia];
+        }
+
+        return res;
+    }
+
+    public int sumaColumnaNota(int materia)
+    {
+        int res = 0;
+
+        for(int alumno = 0;alumno<cantAlumnos;alumno++)
+        {
+            //Emula la latencia fisica de acceso a la base de datos
+            try {
+                System.out.println(alumno+"~"+materia);
+                Thread.sleep(r.nextInt(2001));
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            res += nota[alumno][materia];
+        }
+
+        return res;
+    }
+
+    public String toString()
+    {
+        String res = "";
+
+        res += "Notas: \n";
+
+        for (int i = 0;i<cantAlumnos;i++)
+        {
+            for (int j = 0;j<cantMaterias;j++)
+            {
+                res += nota[i][j] + "-";
+            }
+            res += "\n";
+        }
+
+        res += "Faltas: \n";
+        for (int i = 0;i<cantAlumnos;i++)
+        {
+            for (int j = 0;j<cantMeses;j++)
+            {
+                res += falta[i][j] + "-";
+            }
+            res += "\n";
+        }
+
+        res += "Amonestacion: \n";
+        for (int i = 0;i<cantAlumnos;i++)
+        {
+            for (int j = 0;j<cantMeses;j++)
+            {
+                res += amonestacion[i][j] + "-";
+            }
+            res += "\n";
+        }
+
+        return res;
+    }
 }
