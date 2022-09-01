@@ -24,6 +24,7 @@ public class Secundaria {
         AlumnoMasFaltante alumnoMasFaltante = new AlumnoMasFaltante(base);
         AlumnoMejorPromedio alumnoMejorPromedio = new AlumnoMejorPromedio(base);
         MateriaMejorPromedio materiaMejorPromedio = new MateriaMejorPromedio(base);
+        AlumnoMenosCincoAprobada alumnoMenosCincoAprobada = new AlumnoMenosCincoAprobada(base);
         Future[] resultado = new Future[7];
         int aux;
 
@@ -48,6 +49,7 @@ public class Secundaria {
         resultado[0] = ejecutor.submit(alumnoMasFaltante);
         resultado[1] = ejecutor.submit(alumnoMejorPromedio);
         resultado[2] = ejecutor.submit(materiaMejorPromedio);
+        resultado[3] = ejecutor.submit(alumnoMenosCincoAprobada);
         //Seccion de gets 
 
         try {
@@ -76,6 +78,14 @@ public class Secundaria {
             else
             {
                 System.out.println("No existe una materia con mejor promedio que el resto.");
+            }
+            if((aux = (int)resultado[3].get()) != -1)
+            {
+                System.out.println("Cantidad alumnos que aprobaron menos de 5 materias" +resultado[3].get());
+            }
+            else
+            {
+                System.out.println("Error");
             }
 
         } catch (InterruptedException e) {
