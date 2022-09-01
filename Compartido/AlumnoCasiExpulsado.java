@@ -23,13 +23,13 @@ public class AlumnoCasiExpulsado implements Callable {
                 if (amonestaciones[i][j] > 0) {
                     cantAmonestaciones++;
                 }
-                if (cantAmonestaciones == 3) {
+                if (cantAmonestaciones == 5) {
                     // este if es para cortar cuando ya se detecta que el alumno tiene 3
                     // amonestaciones
                     j = cantMeses;
                 }
             }
-            if (cantAmonestaciones > 2) {
+            if (cantAmonestaciones > 4) {
                 cantAlumApuntoSerExpulsado++;
             }
             cantAmonestaciones = 0;

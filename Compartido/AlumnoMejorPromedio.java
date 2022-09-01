@@ -22,6 +22,8 @@ public class AlumnoMejorPromedio implements Callable {
         for(int alumno = 0;alumno<cantAlumnos;alumno++)
         {
             promedioActual = base.sumaFilaNota(alumno) / cantMaterias;
+            System.out.println("promedio actual " +promedioActual);
+            System.out.println("mejor promedio " +mayorPromedio);
             if(promedioActual>mayorPromedio)
             {
                 alumnoMejorPromedio = alumno;

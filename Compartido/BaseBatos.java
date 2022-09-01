@@ -7,8 +7,8 @@ public class BaseBatos {
     final private static Random r = new Random();
 
     final private static int cantAlumnos = 6;
-    final private static int cantMaterias = 3;
-    final private static int cantMeses = 3;
+    final private static int cantMaterias = 10;
+    final private static int cantMeses = 9;
 
     private int[][] nota;
     private int[][] falta;
@@ -28,8 +28,8 @@ public class BaseBatos {
             }
             for (int j = 0; j<cantMeses;j++)
             {
-                falta[i][j] = r.nextInt(30)+1;
-                amonestacion[i][j] = r.nextInt(4)+1;
+                falta[i][j] = r.nextInt(6);
+                amonestacion[i][j] = r.nextInt(3);
             }
         }
     }
@@ -57,7 +57,6 @@ public class BaseBatos {
         {
             //Emula la latencia fisica de acceso a la base de datos
             try {
-                System.out.println(alumno+"_"+mes);
                 Thread.sleep(r.nextInt(2001));
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
@@ -77,7 +76,6 @@ public class BaseBatos {
         {
             //Emula la latencia fisica de acceso a la base de datos
             try {
-                System.out.println(alumno+"-"+materia);
                 Thread.sleep(r.nextInt(2001));
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
@@ -97,7 +95,6 @@ public class BaseBatos {
         {
             //Emula la latencia fisica de acceso a la base de datos
             try {
-                System.out.println(alumno+"~"+materia);
                 Thread.sleep(r.nextInt(2001));
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
