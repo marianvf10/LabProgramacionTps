@@ -24,6 +24,10 @@ public class Secundaria {
         AlumnoMasFaltante alumnoMasFaltante = new AlumnoMasFaltante(base);
         AlumnoMejorPromedio alumnoMejorPromedio = new AlumnoMejorPromedio(base);
         MateriaMejorPromedio materiaMejorPromedio = new MateriaMejorPromedio(base);
+        AlumnoMenosCincoAprobada alumnoMenosCincoAprobada = new AlumnoMenosCincoAprobada(base);
+        AlumnoMasCincoAprobada alumnoMasCincoAprobada = new AlumnoMasCincoAprobada(base);
+        AlumnoCasiExpulsado alumnoCasiExpulsado = new AlumnoCasiExpulsado(base);
+        AlumnoBuenComportamiento alumnoBuenComportamiento = new AlumnoBuenComportamiento(base);
         Future[] resultado = new Future[7];
         int aux;
 
@@ -48,6 +52,10 @@ public class Secundaria {
         resultado[0] = ejecutor.submit(alumnoMasFaltante);
         resultado[1] = ejecutor.submit(alumnoMejorPromedio);
         resultado[2] = ejecutor.submit(materiaMejorPromedio);
+        resultado[3] = ejecutor.submit(alumnoMenosCincoAprobada);
+        resultado[4] = ejecutor.submit(alumnoMasCincoAprobada);
+        resultado[5] = ejecutor.submit(alumnoCasiExpulsado);
+        resultado[6] = ejecutor.submit(alumnoBuenComportamiento);
         //Seccion de gets 
 
         try {
@@ -76,6 +84,37 @@ public class Secundaria {
             else
             {
                 System.out.println("No existe una materia con mejor promedio que el resto.");
+            }
+            if((aux = (int)resultado[3].get()) != 0)
+            {
+                System.out.println("Cantidad alumnos que aprobaron menos de 5 materias" +resultado[3].get());
+            }
+            else
+            {
+                System.out.println("Todos los alumnos tienen mas de 5 materias aprobadas");
+            }if((aux = (int)resultado[4].get()) != 0)
+            {
+                System.out.println("Cantidad alumnos que aprobaron mas de 5 materias" +resultado[4].get());
+            }
+            else
+            {
+                System.out.println("Ningun alumno tiene mas de 5 materias aprobadas");
+            }
+            if((aux = (int)resultado[5].get()) != 0)
+            {
+                System.out.println("Cantidad alumnos que estan a punto de ser expulsados" +resultado[5].get());
+            }
+            else
+            {
+                System.out.println("No hay ningun alumno en condiciones de ser expulsados");
+            }
+            if((aux = (int)resultado[6].get()) != 0)
+            {
+                System.out.println("Cantidad alumnos con buen comportamiento" +resultado[6].get());
+            }
+            else
+            {
+                System.out.println("No hay ningun alumno que posea un buen comportamiento");
             }
 
         } catch (InterruptedException e) {
