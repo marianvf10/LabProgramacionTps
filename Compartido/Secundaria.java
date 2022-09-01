@@ -25,6 +25,7 @@ public class Secundaria {
         AlumnoMejorPromedio alumnoMejorPromedio = new AlumnoMejorPromedio(base);
         MateriaMejorPromedio materiaMejorPromedio = new MateriaMejorPromedio(base);
         AlumnoMenosCincoAprobada alumnoMenosCincoAprobada = new AlumnoMenosCincoAprobada(base);
+        AlumnoMasCincoAprobada alumnoMasCincoAprobada = new AlumnoMasCincoAprobada(base);
         Future[] resultado = new Future[7];
         int aux;
 
@@ -50,6 +51,7 @@ public class Secundaria {
         resultado[1] = ejecutor.submit(alumnoMejorPromedio);
         resultado[2] = ejecutor.submit(materiaMejorPromedio);
         resultado[3] = ejecutor.submit(alumnoMenosCincoAprobada);
+        resultado[4] = ejecutor.submit(alumnoMasCincoAprobada);
         //Seccion de gets 
 
         try {
@@ -82,6 +84,13 @@ public class Secundaria {
             if((aux = (int)resultado[3].get()) != -1)
             {
                 System.out.println("Cantidad alumnos que aprobaron menos de 5 materias" +resultado[3].get());
+            }
+            else
+            {
+                System.out.println("Error");
+            }if((aux = (int)resultado[4].get()) != -1)
+            {
+                System.out.println("Cantidad alumnos que aprobaron mas de 5 materias" +resultado[4].get());
             }
             else
             {
