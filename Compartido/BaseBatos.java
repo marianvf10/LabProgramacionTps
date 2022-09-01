@@ -146,4 +146,13 @@ public class BaseBatos {
 
         return res;
     }
+    public int[][] getNotas(){
+        return this.nota;
+    }
+    public int[][] getFaltas(){
+        return this.falta;
+    }
+    public int[][] getAmonestaciones(){
+        return this.amonestacion;
+    }
 }
