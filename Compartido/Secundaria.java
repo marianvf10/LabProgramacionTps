@@ -41,8 +41,8 @@ public class Secundaria {
         System.out.println("3-Calcular la materia con mejor promedio");
         System.out.println("4-Calcular cantidad de alumnos con menos de 5 materias aprobadas");
         System.out.println("5-Calcular cantidad de alumnos con mas de 5 materias aprobadas");
-        System.out.println("6-Calcular cantidad de alumnos a punto de ser expulsados(3 amonestaciones o mas)");
-        System.out.println("7-Calcular cantidad de alumnos con buen comportamiento(ninguna amonestacion y menos de 10 faltas");
+        System.out.println("6-Calcular cantidad de alumnos a punto de ser expulsados(5 amonestaciones o mas)");
+        System.out.println("7-Calcular cantidad de alumnos con buen comportamiento(ninguna amoneastacion y menos de 25 faltas");
         do
         {
             System.out.println("\n Ingrese 1 para empezar:");   
@@ -87,14 +87,14 @@ public class Secundaria {
             }
             if((aux = (int)resultado[3].get()) != 0)
             {
-                System.out.println("Cantidad alumnos que aprobaron menos de 5 materias" +resultado[3].get());
+                System.out.println("Cantidad alumnos que aprobaron menos de 5 materias: " +resultado[3].get());
             }
             else
             {
                 System.out.println("Todos los alumnos tienen mas de 5 materias aprobadas");
             }if((aux = (int)resultado[4].get()) != 0)
             {
-                System.out.println("Cantidad alumnos que aprobaron mas de 5 materias" +resultado[4].get());
+                System.out.println("Cantidad alumnos que aprobaron mas de 5 materias: " +resultado[4].get());
             }
             else
             {
@@ -102,7 +102,7 @@ public class Secundaria {
             }
             if((aux = (int)resultado[5].get()) != 0)
             {
-                System.out.println("Cantidad alumnos que estan a punto de ser expulsados" +resultado[5].get());
+                System.out.println("Cantidad alumnos que estan a punto de ser expulsados: " +resultado[5].get());
             }
             else
             {
@@ -110,7 +110,7 @@ public class Secundaria {
             }
             if((aux = (int)resultado[6].get()) != 0)
             {
-                System.out.println("Cantidad alumnos con buen comportamiento" +resultado[6].get());
+                System.out.println("Cantidad alumnos con buen comportamiento: " +resultado[6].get());
             }
             else
             {
