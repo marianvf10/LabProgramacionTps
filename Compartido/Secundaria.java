@@ -26,6 +26,7 @@ public class Secundaria {
         MateriaMejorPromedio materiaMejorPromedio = new MateriaMejorPromedio(base);
         AlumnoMenosCincoAprobada alumnoMenosCincoAprobada = new AlumnoMenosCincoAprobada(base);
         AlumnoMasCincoAprobada alumnoMasCincoAprobada = new AlumnoMasCincoAprobada(base);
+        AlumnoCasiExpulsado alumnoCasiExpulsado = new AlumnoCasiExpulsado(base);
         Future[] resultado = new Future[7];
         int aux;
 
@@ -52,6 +53,7 @@ public class Secundaria {
         resultado[2] = ejecutor.submit(materiaMejorPromedio);
         resultado[3] = ejecutor.submit(alumnoMenosCincoAprobada);
         resultado[4] = ejecutor.submit(alumnoMasCincoAprobada);
+        resultado[5] = ejecutor.submit(alumnoCasiExpulsado);
         //Seccion de gets 
 
         try {
@@ -95,6 +97,14 @@ public class Secundaria {
             else
             {
                 System.out.println("Error");
+            }
+            if((aux = (int)resultado[5].get()) != -1)
+            {
+                System.out.println("Cantidad alumnos que estan a punto de ser expulsados" +resultado[5].get());
+            }
+            else
+            {
+                System.out.println("No hay ningun alumno en condiciones de ser expulsados");
             }
 
         } catch (InterruptedException e) {

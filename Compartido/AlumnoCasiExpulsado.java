@@ -1,5 +1,7 @@
 package Compartido;
 
+import java.util.concurrent.Callable;
+
 public class AlumnoCasiExpulsado implements Callable {
 
     private BaseBatos baseDatos;
