@@ -23,11 +23,11 @@ public class AlumnoMenosCincoAprobada implements Callable {
                 if (nota[i][j] >= 6){
                     cantMateriasAprobadas++;
                 }
-                if (cantMateriasAprobadas == 3){
+                if (cantMateriasAprobadas == 5){
                     j = cantMaterias;
                 }
                 }
-                if (cantMateriasAprobadas < 3){
+                if (cantMateriasAprobadas < 5){
                     cantAlumMenosCincoMateriasAprobadas++;
                 }
                 cantMateriasAprobadas = 0;
