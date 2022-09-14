@@ -16,7 +16,7 @@ public class GemaCurador extends PersonajeDecorator {
 
     }
 
-    public void otorgarEscudoAliado(GemaGuerrero personaje){
+    public void otorgarEscudoAliado(PersonajeBasico personaje){
         //El curandero solo otorga escudos a guerreros
         int escudo = 20;
         if (personaje.getEscudo() == 0){
@@ -29,6 +29,7 @@ public class GemaCurador extends PersonajeDecorator {
     public void revivirAliado(PersonajeBasico personaje){
         if (personaje.getVida() == 0){
             personaje.setVida(100);
+            personaje.setEstado();
         }
     }
     
