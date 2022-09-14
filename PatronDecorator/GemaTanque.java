@@ -25,18 +25,9 @@ public class GemaTanque extends PersonajeDecorator {
         {
             getPersonaje().finDefensa();
             System.out.println(this.getNombre()+" debe intentar escapar " +escapesRestantes+ " mas.");
+            escapesRestantes--;
 
         }
-    }
-
-    private boolean esCritico(){
-        Random r = new Random();
-        int valor = r.nextInt(100);
-        return valor % 2 == 0;
-    }
-
-    public void protegerAliado(){
-        
     }
 
     @Override
@@ -55,7 +46,7 @@ public class GemaTanque extends PersonajeDecorator {
     }
 
     @Override
-    public int atacar(PersonajeBasico perso) {
+    public int atacar(Personaje perso) {
         // TODO Auto-generated method stub
         return getPersonaje().atacar(perso);
     }
@@ -79,9 +70,9 @@ public class GemaTanque extends PersonajeDecorator {
     }
 
     @Override
-    public void setEstado() {
+    public void setEstado(boolean e) {
         // TODO Auto-generated method stub
-        getPersonaje().setEstado();
+        getPersonaje().setEstado(e);
     }
 
     @Override
@@ -94,6 +85,12 @@ public class GemaTanque extends PersonajeDecorator {
     public void finDefensa() {
         // TODO Auto-generated method stub
         getPersonaje().finDefensa();
+    }
+    
+    @Override
+    public void sumarVida(int vida) {
+        // TODO Auto-generated method stub
+        getPersonaje().sumarVida(vida);
     }
     
 }

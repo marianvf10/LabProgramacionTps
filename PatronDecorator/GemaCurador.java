@@ -1,36 +1,116 @@
+import java.util.Random;
+
 public class GemaCurador extends PersonajeDecorator {
+
+    private int turnosHastaCur;
 
     public GemaCurador(Personaje personaje) {
         super(personaje);
+        turnosHastaCur = 3;
         //TODO Auto-generated constructor stub
     }
 
-    public void curarAliado(PersonajeBasico personaje){
-        //el aliado tiene una curacion de 15 unidades
-        int vidaRestante = personaje.getVida();
-        if (vidaRestante < 86) {
-            int vidaActualizada = vidaRestante+15;
-            personaje.setVida(vidaActualizada);
-            System.out.println(this.getNombre()+" curo a "+personaje.getNombre()+" ahora su vida es: "+personaje.getVida());
+    private void finTurno()
+    {
+        if(turnosHastaCur == 1)
+        {
+            turnosHastaCur = 3;
+            getPersonaje().sumarVida(10);
+            System.out.println(getPersonaje().getNombre() +" genero 10 de vida de forma pasiva.");
         }
-
+        else
+        {
+            turnosHastaCur--;
+        }
     }
 
-    public void otorgarEscudoAliado(PersonajeBasico personaje){
-        //El curandero solo otorga escudos a guerreros
-        int escudo = 20;
-        if (personaje.getEscudo() == 0){
-            personaje.setEscudo(escudo);
-        }
-       
-
+    @Override
+    public int recibirDaño(int dañoAtaque) {
+        // TODO Auto-generated method stub
+        return 0;
     }
 
-    public void revivirAliado(PersonajeBasico personaje){
-        if (personaje.getVida() == 0){
-            personaje.setVida(100);
-            personaje.setEstado();
+    @Override
+    public void defenderse() {
+        // TODO Auto-generated method stub
+        Random r = new Random();
+        
+        getPersonaje().defenderse();
+
+        if(r.nextInt(10) == 0)
+        {
+            System.out.println(getPersonaje().getNombre()+ " se curo 10 de vida.");
+            getPersonaje().sumarVida(10);
         }
+        finTurno();
+    }
+
+    @Override
+    public int atacar(Personaje perso) {
+        
+        Random r = new Random();
+        int res = getPersonaje().atacar(perso);
+        if(res == 0 && r.nextInt(10) == 0)
+        {
+            System.out.println(getPersonaje().getNombre()+ " fue veloz y logro un segundo ataque.");
+            getPersonaje().atacar(perso);
+        }
+        finTurno();
+        return res;
+    }
+
+    @Override
+    public void escapar() {
+        // TODO Auto-generated method stub
+        getPersonaje().escapar();
+    }
+
+    @Override
+    public int getDaño() {
+        // TODO Auto-generated method stub
+        return getPersonaje().getDaño();
+    }
+
+    @Override
+    public int getVida() {
+        // TODO Auto-generated method stub
+        return getPersonaje().getVida();
+    }
+
+    @Override
+    public boolean getEstado() {
+        // TODO Auto-generated method stub
+        return getPersonaje().getEstado();
+    }
+
+    @Override
+    public void setEstado(boolean e) {
+        // TODO Auto-generated method stub
+        getPersonaje().setEstado(e);
+    }
+
+    @Override
+    public String getNombre() {
+        // TODO Auto-generated method stub
+        return getPersonaje().getNombre();
+    }
+
+    @Override
+    public void finDefensa() {
+        // TODO Auto-generated method stub
+        getPersonaje().finDefensa();
+    }
+
+    @Override
+    public void accion(Personaje enemigo) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void sumarVida(int vida) {
+        // TODO Auto-generated method stub
+        getPersonaje().sumarVida(vida);
     }
     
 }

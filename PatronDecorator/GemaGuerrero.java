@@ -6,7 +6,7 @@ public class GemaGuerrero extends PersonajeDecorator {
 
     public GemaGuerrero(Personaje personaje){
         super(personaje);
-        danioCritico = 2;
+        danioCritico = 7;
     }
 
     @Override
@@ -23,7 +23,7 @@ public class GemaGuerrero extends PersonajeDecorator {
     }
 
     @Override
-    public int atacar(PersonajeBasico perso) {
+    public int atacar(Personaje perso) {
 
         Random r = new Random();
         int res = getPersonaje().atacar(perso);
@@ -36,25 +36,18 @@ public class GemaGuerrero extends PersonajeDecorator {
                     perso.getNombre()+ "Le quedan " +perso.getVida()+ " puntos de vida.");
         }
 
+        if(perso.getVida() <= 0)
+        {
+            System.out
+                    .println(getNombre()+ "logro asesinar a " +perso.getNombre());
+                    perso.setEstado(false);
+        }
         return res;
     }
 
     public void finDefensa()
     {
         getPersonaje().finDefensa();
-    }
-
-    public void matar(PersonajeBasico perso)
-    {
-        finDefensa();
-        if(perso.getVida() <= 0)
-        {
-            System.out.println(getNombre()+ " mato a "+ perso.getNombre());
-        }
-        else
-        {
-            System.out.println("Aun no puede matarse a "+ perso.getNombre());
-        }
     }
 
     @Override
@@ -81,9 +74,9 @@ public class GemaGuerrero extends PersonajeDecorator {
     }
 
     @Override
-    public void setEstado() {
+    public void setEstado(boolean e) {
         // TODO Auto-generated method stub
-        getPersonaje().setEstado();
+        getPersonaje().setEstado(e);
     }
 
     @Override
@@ -92,24 +85,9 @@ public class GemaGuerrero extends PersonajeDecorator {
     }
 
     @Override
-    public void accion(PersonajeBasico enemigo) {
-        Random r = new Random();
-        
-        switch(r.nextInt(4))
-        {
-            case 0:
-                atacar(enemigo);
-                break;
-            case 1:
-                defenderse();
-                break;
-            case 2:
-                escapar();
-                break;
-            
-        }
-        
+    public void sumarVida(int vida) {
+        // TODO Auto-generated method stub
+        getPersonaje().sumarVida(vida);
     }
-
     
 }

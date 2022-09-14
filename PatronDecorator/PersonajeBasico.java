@@ -13,7 +13,7 @@ public class PersonajeBasico implements Personaje {
     public PersonajeBasico(String unNombre) {
         this.nombre = unNombre;
         this.vida = 100;
-        this.dañoAtaque = 5;
+        this.dañoAtaque = 10;
         this.activo = true;
         enDefensa = false;
         this.escudo = 0;
@@ -26,7 +26,14 @@ public class PersonajeBasico implements Personaje {
         if(!enDefensa)
         {
             nivelDefensa = 0;
-            this.vida -= dañoAtaque;
+            if(this.vida < dañoAtaque)
+            {
+                this.vida = 0;
+            }
+            else
+            {
+                this.vida -= dañoAtaque;
+            }
         }
         return nivelDefensa;
     }
@@ -34,17 +41,18 @@ public class PersonajeBasico implements Personaje {
     public void defenderse() {
         
         // Cuando el personaje se defiende, el daño recibido se reduce a la mitad
+        System.out.println(this.getNombre() +" se defendera durante esta ronda.");
         enDefensa = true;
     }
 
-    public int atacar(PersonajeBasico perso) {
+    public int atacar(Personaje perso) {
 
             int danioInfrigido = this.dañoAtaque;
             int res = perso.recibirDaño(danioInfrigido);
 
             finDefensa();
 
-            if(res == 1)
+            if(res == 0)
             {
             System.out
                     .println(this.nombre + " ataco con " + danioInfrigido + " puntos de ataque a "
@@ -59,7 +67,7 @@ public class PersonajeBasico implements Personaje {
                     {
                         this.recibirDaño(this.dañoAtaque);
                         System.out
-                    .println(perso.getNombre() + " recibio su propio danio de ataque");
+                    .println(getNombre() + " recibio su propio danio de ataque.Ahora su vida es de " +getVida());
                     }
             }
 
@@ -82,15 +90,15 @@ public class PersonajeBasico implements Personaje {
         return this.vida;
     };
 
-    public void setVida(int vida) {
-        this.vida = vida;
+    public void sumarVida(int vida) {
+        this.vida += vida;
     }
 
     public String getNombre() {
         return this.nombre;
     }
-    public void setEstado(){
-        this.activo = true;
+    public void setEstado(boolean e){
+        this.activo = e;
     }
 
     public boolean getEstado(){
@@ -108,23 +116,5 @@ public class PersonajeBasico implements Personaje {
     public void finDefensa()
     {
         enDefensa = false;
-    }
-
-    @Override
-    public void accion(PersonajeBasico enemigo) {
-        Random r = new Random();
-        
-        switch(r.nextInt(3))
-        {
-            case 0:
-                atacar(enemigo);
-                break;
-            case 1:
-                defenderse();
-                break;
-            case 2:
-                escapar();
-                break;
-        }
-    }
+    }    
 }
