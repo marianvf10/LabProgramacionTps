@@ -1,11 +1,14 @@
 public class Main {
     public static void main(String args[]){
-        PersonajeBasico p1 = new PersonajeBasico("MARIANO");
-        PersonajeBasico p2 = new PersonajeBasico("ADRIANO");
-        p1.atacar(p2);
-        System.out.println();
-        GemaGuerrero gemaGuerrero = new GemaGuerrero(p1);
-        gemaGuerrero.atacar(p2);
+        //Se crean los personajes
+        PersonajeBasico p1 = new PersonajeBasico("Pepe");
+        PersonajeBasico p2 = new PersonajeBasico("Lucas");
+        PersonajeBasico e1 = new PersonajeBasico("Orco malvado");
+        PersonajeBasico e2 = new PersonajeBasico("Bruja oscura");
 
+        //Los personajes exploran el mapa,y consiguen mejoras
+        GemaGuerrero g1 = new GemaGuerrero(p1);
+        
+        //Empieza una batalla
     }
 }

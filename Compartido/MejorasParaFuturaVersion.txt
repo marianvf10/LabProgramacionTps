@@ -1,0 +1,14 @@
+!Pudimos haber aprovechado mejor la sincronizacion.Cada clase callable(encargada de una unica operacion),
+pude tener si propio executor service para realizar operacion asincronas sobre diferentes filas/columnas
+de un arreglo a la vez.Por ejemplo,a la hora de buscar el mejor promedio, se crean 6 hilos asociados a 
+executor service dentro de AlumnoMejorPromedio.
+
+!No se maximizo reusabilidad. hay modulos muy especificos que se podrian haber generalizado mas, para poder ser
+ reutilizados en futuras operaciones, y no tener que crear un modulo desde 0.(Ej:sumaFilaNota)
+
+!Pudimos haber creado todas las operaciones dentro de un unico callable,con una variable global Codigo.Ese codigo,
+dentro del call,podria redirigir a otros modulos donde cada uno representa una de las operaciones.En caso de gran
+escalabilidad del programa, el metodo de un callable por operacion se puede volver engorroso.
+
+!En general, poca legibilidad.Partes que se podian hacer en menos lineas, comentar segmentos dificiles de entender,
+etc

@@ -1,10 +1,10 @@
 public interface Personaje{
  
-    public abstract void recibirDaño(int dañoAtaque);
+    public abstract int recibirDaño(int dañoAtaque);
 
-    public abstract void defenderse(int dañoAtaque);
+    public abstract void defenderse();
     
-    public abstract void atacar(PersonajeBasico perso);
+    public abstract int atacar(PersonajeBasico perso);
 
     public abstract void escapar();
 
@@ -17,6 +17,10 @@ public interface Personaje{
     public abstract void setEstado();
 
     public abstract String getNombre();
+
+    public abstract void finDefensa();
+
+    public abstract void accion(PersonajeBasico enemigo);
 
 
 
