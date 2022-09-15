@@ -26,8 +26,7 @@ public class GemaCurador extends PersonajeDecorator {
 
     @Override
     public int recibirDaño(int dañoAtaque) {
-        // TODO Auto-generated method stub
-        return 0;
+        return getPersonaje().recibirDaño(dañoAtaque);
     }
 
     @Override
@@ -99,12 +98,6 @@ public class GemaCurador extends PersonajeDecorator {
     public void finDefensa() {
         // TODO Auto-generated method stub
         getPersonaje().finDefensa();
-    }
-
-    @Override
-    public void accion(Personaje enemigo) {
-        // TODO Auto-generated method stub
-        
     }
 
     @Override
