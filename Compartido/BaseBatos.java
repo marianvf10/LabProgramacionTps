@@ -57,7 +57,7 @@ public class BaseBatos {
         {
             //Emula la latencia fisica de acceso a la base de datos
             try {
-                Thread.sleep(r.nextInt(2001));
+                Thread.sleep(r.nextInt(200));
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -76,7 +76,7 @@ public class BaseBatos {
         {
             //Emula la latencia fisica de acceso a la base de datos
             try {
-                Thread.sleep(r.nextInt(2001));
+                Thread.sleep(r.nextInt(200));
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -95,7 +95,7 @@ public class BaseBatos {
         {
             //Emula la latencia fisica de acceso a la base de datos
             try {
-                Thread.sleep(r.nextInt(2001));
+                Thread.sleep(r.nextInt(200));
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

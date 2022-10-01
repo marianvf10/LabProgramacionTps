@@ -20,10 +20,9 @@ public class AlumnoCasiExpulsado implements Callable {
 
         for (int i = 0; i < cantAlumnos; i++) {
             for (int j = 0; j < cantMeses; j++) {
-                if (amonestaciones[i][j] > 0) {
-                    cantAmonestaciones++;
-                }
-                if (cantAmonestaciones == 5) {
+                cantAmonestaciones += amonestaciones[i][j];
+
+                if (cantAmonestaciones > 4) {
                     // este if es para cortar cuando ya se detecta que el alumno tiene 3
                     // amonestaciones
                     j = cantMeses;
