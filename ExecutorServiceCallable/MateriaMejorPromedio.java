@@ -1,4 +1,4 @@
-package Compartido;
+package ExecutorServiceCallable;
 
 import java.util.concurrent.Callable;
 
@@ -22,7 +22,7 @@ public class MateriaMejorPromedio implements Callable {
 
         for(int materia = 0;materia<cantMaterias;materia++)
         {
-            promedioActual = base.sumaColumnaNota(materia) / cantAlumnos;
+            promedioActual = Math.round(base.sumaColumnaNota(materia) / cantAlumnos);
             if(promedioActual>mayorPromedio)
             {
                 materiaMejorPromedio = materia;

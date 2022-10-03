@@ -1,4 +1,4 @@
-package Compartido;
+package ExecutorServiceCallable;
 
 import java.util.concurrent.Callable;
 
@@ -15,7 +15,7 @@ public class AlumnoCasiExpulsado implements Callable {
         int cantAlumApuntoSerExpulsado, cantAlumnos, cantMeses, cantAmonestaciones;
         cantAlumApuntoSerExpulsado = 0;
         cantAlumnos = baseDatos.getCantAlumnos();
-        cantMeses = baseDatos.getCantMaterias();
+        cantMeses = baseDatos.getCantMeses();
         cantAmonestaciones = 0;
 
         for (int i = 0; i < cantAlumnos; i++) {
